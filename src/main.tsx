@@ -6,7 +6,11 @@ import App from "./App";
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("root element를 찾을 수 없습니다.");
 
-createRoot(rootElement).render(
+const gameViewport = document.createElement("div");
+gameViewport.id = "game-viewport";
+rootElement.appendChild(gameViewport);
+
+createRoot(gameViewport).render(
   <StrictMode>
     <App />
   </StrictMode>,

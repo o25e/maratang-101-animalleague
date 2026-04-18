@@ -13,7 +13,7 @@ export default function SpiceScreen({ spiceLevel, onSelect, onBack, onNext }: Sp
 
   return (
     <div
-      className="min-h-screen flex flex-col overflow-hidden select-none"
+      className="w-full h-full flex flex-col overflow-hidden select-none"
       style={{ background: "linear-gradient(160deg, #8B5CF6 0%, #7C3AED 40%, #6D28D9 100%)" }}
     >
       {/* 중앙 영역: 족자 + 그릇 + 버튼 */}

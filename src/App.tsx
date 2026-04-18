@@ -78,5 +78,5 @@ export default function App() {
     );
   }
 
-  return null;
+  return <div className="w-full h-full" />;
 }

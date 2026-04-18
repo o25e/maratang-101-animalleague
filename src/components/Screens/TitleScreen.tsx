@@ -5,7 +5,7 @@ interface TitleScreenProps {
 
 export default function TitleScreen({ onStart, onInstructions }: TitleScreenProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-200 via-orange-100 to-amber-300 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+    <div className="w-full h-full bg-gradient-to-b from-amber-200 via-orange-100 to-amber-300 flex flex-col items-center justify-center p-4 relative overflow-hidden">
       {/* floating bg emoji */}
       <div className="absolute inset-0 pointer-events-none select-none" aria-hidden>
         {["🌶️","🍜","🥢","🫕","🥩","🌿","🧄","🥬"].map((e, i) => (

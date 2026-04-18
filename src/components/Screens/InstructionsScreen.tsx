@@ -26,7 +26,7 @@ export default function InstructionsScreen({ onBack }: InstructionsScreenProps) 
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-200 via-orange-100 to-amber-300 flex flex-col items-center justify-center p-4">
+    <div className="w-full h-full bg-gradient-to-b from-amber-200 via-orange-100 to-amber-300 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="bg-green-800 border-4 border-green-900 rounded-t-2xl text-white text-center py-3 font-black text-xl tracking-widest shadow-lg">
           게 임 방 법

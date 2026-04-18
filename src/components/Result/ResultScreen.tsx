@@ -21,7 +21,7 @@ export default function ResultScreen({
 
   return (
     <div
-      className="min-h-screen flex flex-col select-none overflow-hidden"
+      className="w-full h-full flex flex-col select-none overflow-hidden"
       style={{ background: "linear-gradient(180deg, #EDE9FE 0%, #DDD6FE 25%, #C4B5FD 60%, #A78BFA 100%)" }}
     >
       {/* ── 헤더 ── */}
@@ -37,7 +37,7 @@ export default function ResultScreen({
       </div>
 
       {/* ── 상단: 말풍선(좌) + 교수 이미지(우) ── */}
-      <div className="flex items-end px-3 pt-3 gap-3 flex-shrink-0" style={{ minHeight: "200px" }}>
+      <div className="flex items-end px-3 pt-2 gap-3 flex-shrink-0" style={{ minHeight: "160px" }}>
 
         {/* 말풍선 영역 */}
         <div className="flex-1 flex flex-col gap-2 pb-4">
@@ -80,17 +80,17 @@ export default function ResultScreen({
         </div>
 
         {/* 교수 이미지 */}
-        <div className="flex-shrink-0 flex items-end justify-center" style={{ width: "150px", height: "200px" }}>
+        <div className="flex-shrink-0 flex items-end justify-center" style={{ width: "130px", height: "160px" }}>
           <img
             src="/professor.png"
             alt="교수님"
-            style={{ width: "150px", height: "200px", objectFit: "contain", objectPosition: "bottom", filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.35))" }}
+            style={{ width: "130px", height: "160px", objectFit: "contain", objectPosition: "bottom", filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.35))" }}
           />
         </div>
       </div>
 
       {/* ── 중앙: 대형 마라탕 그릇 ── */}
-      <div className="flex-1 flex items-center justify-center py-2">
+      <div className="flex-1 flex items-center justify-center py-1">
         <div className="relative" style={{ width: "280px", height: "236px" }}>
 
           {/* 그릇 림 */}
@@ -193,7 +193,7 @@ export default function ResultScreen({
       </div>
 
       {/* ── 다시 도전 버튼 ── */}
-      <div className="px-3 py-3 pb-5 flex-shrink-0">
+      <div className="px-3 py-2 flex-shrink-0">
         <button
           onClick={onReset}
           className="w-full font-black text-lg py-4 rounded-2xl border-b-4 transition-all duration-75 active:scale-95 active:border-b-0"
