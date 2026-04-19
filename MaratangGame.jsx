@@ -18,6 +18,7 @@ export default function MaratangGame() {
     toggleSauce,
     submitResult,
     reset,
+    restartGame,
   } = useGameState();
 
   if (screen === "title") {
@@ -73,7 +74,7 @@ export default function MaratangGame() {
         selectedIngredients={selectedIngredients}
         spiceLevel={spiceLevel}
         selectedSauces={selectedSauces}
-        onReset={reset}
+        onReset={restartGame}
       />
     );
   }

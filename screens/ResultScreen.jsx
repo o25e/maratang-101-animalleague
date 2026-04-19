@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { SPICE_LEVELS, SAUCES } from "../constants/gameData";
+import btnRestart from "../img/button_restart.png";
+import btnRestartHover from "../img/button_restart_hover.png";
 
 export default function ResultScreen({ ending, selectedIngredients, spiceLevel, selectedSauces, onReset }) {
+  const [restartHovered, setRestartHovered] = useState(false);
+
   return (
     <div className={`min-h-screen bg-gradient-to-b ${ending.bg} flex flex-col items-center justify-center p-4`}>
       <div className="w-full max-w-sm">
@@ -72,10 +77,14 @@ export default function ResultScreen({ ending, selectedIngredients, spiceLevel, 
             {/* retry button */}
             <button
               onClick={onReset}
-              className="w-full bg-red-500 hover:bg-red-600 active:scale-95 active:translate-y-1 active:border-b-0
-                         text-white font-black text-xl py-4 rounded-2xl
-                         border-b-4 border-red-800 shadow-md transition-all duration-75">
-              🔄 다시 도전!
+              onMouseEnter={() => setRestartHovered(true)}
+              onMouseLeave={() => setRestartHovered(false)}
+              className="w-full active:scale-95 active:translate-y-1 transition-all duration-75 bg-transparent border-none p-0 cursor-pointer">
+              <img
+                src={restartHovered ? btnRestartHover : btnRestart}
+                alt="다시 도전"
+                className="w-full"
+              />
             </button>
           </div>
         </div>

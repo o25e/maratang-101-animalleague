@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Ending, Ingredient } from "../../types/game";
 
 interface ResultScreenProps {
@@ -23,6 +24,7 @@ export default function ResultScreen({
   selectedSauces,
   onReset,
 }: ResultScreenProps) {
+  const [restartHovered, setRestartHovered] = useState(false);
   const isMalatangGood = ending.score > 50;
   const isSauceGood =
     !selectedSauces.includes("cilantro") && !selectedSauces.includes("mintchoco");
@@ -163,19 +165,19 @@ export default function ResultScreen({
         </div>
       </div>
 
-      {/* 다시 도전 버튼 */}
-      <div className="absolute bottom-4 left-3 right-3" style={{ zIndex: 40 }}>
+      {/* 다시 도전 버튼 — 위치: bottom/right, 크기: width로 조절 */}
+      <div className="absolute" style={{ zIndex: 40, bottom: 5, right: 11 }}>
         <button
           onClick={onReset}
-          className="w-full font-black text-lg py-4 rounded-2xl border-b-4 transition-all duration-75 active:scale-95 active:border-b-0"
-          style={{
-            background: "linear-gradient(135deg, #F97316, #EA580C)",
-            color: "white",
-            borderColor: "#9A3412",
-            boxShadow: "0 4px 0 #7C2D12",
-          }}
+          onMouseEnter={() => setRestartHovered(true)}
+          onMouseLeave={() => setRestartHovered(false)}
+          className="bg-transparent border-none p-0 cursor-pointer transition-all duration-75 active:scale-95 active:translate-y-1"
         >
-          다시 도전
+          <img
+            src={restartHovered ? "/img/button_restart_hover.png" : "/img/button_restart.png"}
+            alt="다시 도전"
+            style={{ width: 230 }}
+          />
         </button>
       </div>
     </div>

@@ -37,6 +37,14 @@ export function useGameState() {
     setScreen("title");
   };
 
+  const restartGame = () => {
+    setSelectedIngredients([]);
+    setSpiceLevel(null);
+    setSelectedSauces([]);
+    setEnding(null);
+    setScreen("ingredients");
+  };
+
   return {
     screen, setScreen,
     selectedIngredients,
@@ -48,5 +56,6 @@ export function useGameState() {
     toggleSauce,
     submitResult,
     reset,
+    restartGame,
   };
 }
