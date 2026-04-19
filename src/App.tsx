@@ -22,9 +22,13 @@ export default function App() {
     reset,
   } = useGameState();
 
-  // 게임 화면(재료선택/맵기선택/소스선택) 중일 때 배경음 재생
+  // 게임 화면(재료선택/맵기선택/소스선택) 중일 때 게임 배경음 재생
   const isGameScreen = ["ingredients", "spice", "sauce"].includes(screen);
   useBGM(isGameScreen, "/sounds/gamebgm.mp3", 0.3);
+
+  // 타이틀 관련 화면(타이틀, 게임방법 설명) 중일 때 타이틀 배경음 재생
+  const isTitleScreen = ["title", "manual", "instructions"].includes(screen);
+  useBGM(isTitleScreen, "/sounds/titlebgm.mp3", 0.3);
 
   if (screen === "title") {
     return (
