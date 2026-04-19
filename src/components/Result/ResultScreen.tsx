@@ -13,8 +13,10 @@ interface ResultScreenProps {
 const GRADE_COLORS: Record<string, string> = {
   "A+": "#EAB308",
   "A":  "#16A34A",
+  "A-": "#059669",
   "B+": "#2563EB",
   "B":  "#0D9488",
+  "B-": "#0284C7",
   "C":  "#F97316",
   "D":  "#EF4444",
   "F":  "#B91C1C",
@@ -60,10 +62,10 @@ export default function ResultScreen({
   const [c0, c1, c2] = ending.comments;
 
   const finalMessage =
-    ending.score >= 90 ? "거의 완벽했어. 최상의 맛으로 다시 한번 더 말아주게!" :
-    ending.score >= 60 ? "나쁘진 않아.. 좀 더 맛있게 다시 한번 말아주게!" :
-    ending.score >= 30 ? "흠.. 정말 최선이었나? 다시 말아주게나." :
-    "정말 맛이 없군!!! 다시 말아오게.";
+    ending.score >= 90 ? "거의 완벽했어. \n 조금만 더 다듬으면 A+도 가능할 것 같군!" :
+    ending.score >= 60 ? "나쁘진 않아.. \n 좀 더 맛있게 다시 한번 말아주게!" :
+    ending.score >= 30 ? "흠.. 정말 최선이었나? \n 다시 말아주게나." :
+    "정말 맛이 없군!!! \n 다시 말아오게.";
 
   return (
     <div className="relative w-full h-full select-none overflow-hidden" style={{ visibility: bgReady ? "visible" : "hidden" }}>
@@ -155,7 +157,7 @@ export default function ResultScreen({
               <p
                 key="final"
                 className="font-semibold leading-snug text-gray-800"
-                style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.6s ease forwards" }}
+                style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.6s ease forwards", whiteSpace: "pre-line" }}
               >
                 {finalMessage}
               </p>
