@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { SPICE_LEVELS } from "../../constants/data";
+import WarningModal from "./WarningModal";
 
 interface SpiceScreenProps {
   spiceLevel: number | null;
@@ -10,6 +12,18 @@ interface SpiceScreenProps {
 export default function SpiceScreen({ spiceLevel, onSelect, onBack, onNext }: SpiceScreenProps) {
   const selected   = spiceLevel !== null ? SPICE_LEVELS[spiceLevel] : null;
   const canProceed = spiceLevel !== null;
+  const [showWarning, setShowWarning] = useState(false);
+
+  useEffect(() => {
+    if (!showWarning) return;
+    const t = setTimeout(() => setShowWarning(false), 2000);
+    return () => clearTimeout(t);
+  }, [showWarning]);
+
+  function handleNext() {
+    if (!canProceed) { setShowWarning(true); return; }
+    onNext();
+  }
 
   return (
     <div
@@ -47,6 +61,7 @@ export default function SpiceScreen({ spiceLevel, onSelect, onBack, onNext }: Sp
         {/* 중앙 그릇 — 맵기 시각화 */}
         <div className="transition-transform duration-200">
           <div className="relative" style={{ width: "260px", height: "220px" }}>
+            <WarningModal message="맵기 단계를 선택해야지요!" visible={showWarning} />
 
             {/* 상단 림 */}
             <div
@@ -130,64 +145,52 @@ export default function SpiceScreen({ spiceLevel, onSelect, onBack, onNext }: Sp
           </div>
         </div>
 
-        {/* 오른쪽: ← 뒤로 + 상태 배지 + ▶ 다음 */}
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col items-center gap-3">
-
-          {/* 뒤로 버튼 */}
-          <button
-            onClick={onBack}
-            className="w-14 h-14 rounded-full flex items-center justify-center text-white text-xl font-black
-                       shadow-lg active:scale-90 transition-all duration-75 border-4"
-            style={{
-              background: "linear-gradient(135deg, #9CA3AF, #6B7280)",
-              borderColor: "#4B5563",
-              boxShadow: "0 4px 0 #374151",
-            }}
-          >
-            ←
-          </button>
-
-          {/* 상태 배지 */}
-          <div
-            className={`text-xs font-black px-2 py-1 rounded-full text-center leading-tight shadow ${
-              canProceed ? "bg-green-400 text-white" : "bg-white/90 text-purple-900"
-            }`}
-            style={{ minWidth: "48px" }}
-          >
-            {selected ? selected.label : "미선택"}
-          </div>
-
-          {/* 다음 버튼 */}
-          <button
-            onClick={onNext}
-            disabled={!canProceed}
-            className="w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl font-black
-                       shadow-lg active:scale-90 transition-all duration-75 border-4"
-            style={{
-              background: canProceed
-                ? "linear-gradient(135deg, #F97316, #EA580C)"
-                : "linear-gradient(135deg, #9CA3AF, #6B7280)",
-              borderColor: canProceed ? "#C2410C" : "#4B5563",
-              boxShadow: canProceed ? "0 4px 0 #9A3412" : "0 4px 0 #374151",
-            }}
-          >
-            ▶
-          </button>
+        {/* 상태 배지 */}
+        <div
+          className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs font-black px-2 py-1 rounded-full text-center leading-tight shadow ${
+            canProceed ? "bg-green-400 text-white" : "bg-white/90 text-purple-900"
+          }`}
+          style={{ minWidth: "48px" }}
+        >
+          {selected ? selected.label : "미선택"}
         </div>
       </div>
 
-      {/* 하단 상태 텍스트 */}
-      <div className="text-center pb-1">
-        <span className="text-white/80 text-xs font-bold">
-          {canProceed
-            ? `✅ ${selected!.label} (${selected!.desc}) 선택됨 — ▶ 버튼으로 다음 단계`
-            : "맵기 단계를 선택하세요"}
-        </span>
+{/* 이전/다음 버튼 — 선택 버튼 위, 왼쪽/오른쪽 */}
+      <div className="flex justify-between px-2 pb-1 flex-shrink-0">
+        <button
+          onClick={onBack}
+          className="group transition-all duration-75 active:scale-90"
+        >
+          <img
+            src="/img/next_button-1.png"
+            alt="이전"
+            className="h-12 object-contain rotate-180"
+            draggable={false}
+          />
+        </button>
+        <button
+          onClick={handleNext}
+          className="group transition-all duration-75 active:scale-90"
+        >
+          <img
+            src="/img/next_button-1.png"
+            alt="다음"
+            className="h-12 object-contain group-hover:hidden"
+            draggable={false}
+          />
+          <img
+            src="/img/next_button.png"
+            alt="다음"
+            className="h-12 object-contain hidden group-hover:block"
+            draggable={false}
+          />
+        </button>
       </div>
 
       {/* 하단 맵기 단계 버튼 1행 */}
       <div
-        className="px-2 py-3 border-t-4"
+        className="px-2 py-3 border-t-4 flex-shrink-0"
         style={{
           background: "linear-gradient(180deg, rgba(109,40,217,0.6) 0%, rgba(76,29,149,0.8) 100%)",
           borderColor: "#4C1D95",
@@ -200,12 +203,12 @@ export default function SpiceScreen({ spiceLevel, onSelect, onBack, onNext }: Sp
               <button
                 key={sp.level}
                 onClick={() => onSelect(sp.level)}
-                className="flex flex-col items-center justify-center gap-0.5 rounded-lg font-bold
+                className="flex flex-col items-center justify-center gap-1 rounded-lg font-bold
                            transition-all duration-75 active:scale-90 flex-1"
                 style={{
                   minWidth: 0,
-                  paddingTop: "6px",
-                  paddingBottom: "6px",
+                  paddingTop: "10px",
+                  paddingBottom: "10px",
                   border: "2px solid #CA8A04",
                   borderBottom: "4px solid #A16207",
                   background: isSelected
@@ -217,13 +220,13 @@ export default function SpiceScreen({ spiceLevel, onSelect, onBack, onNext }: Sp
                     : "0 2px 4px rgba(0,0,0,0.3)",
                 }}
               >
-                <span style={{ fontSize: "18px", lineHeight: 1 }}>
+                <span style={{ fontSize: "22px", lineHeight: 1 }}>
                   {sp.peppers === 0 ? "✨" : "🌶️".repeat(Math.min(sp.peppers, 3))}
                 </span>
-                <span style={{ fontSize: "9px", lineHeight: 1.2, textAlign: "center" }}>
+                <span style={{ fontSize: "12px", lineHeight: 1.2, textAlign: "center", fontWeight: 700 }}>
                   {sp.label}
                 </span>
-                <span style={{ fontSize: "8px", lineHeight: 1.2, textAlign: "center", opacity: 0.75 }}>
+                <span style={{ fontSize: "10px", lineHeight: 1.2, textAlign: "center", opacity: 0.75 }}>
                   {sp.desc}
                 </span>
               </button>
