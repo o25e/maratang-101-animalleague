@@ -98,11 +98,11 @@ export default function IngredientsScreen({
         {/* 개수 상태 배지 */}
         <div
           className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs font-black px-2 py-1 rounded-full text-center leading-tight shadow ${
-            canProceed ? "bg-green-400 text-white" : "bg-white/90 text-purple-900"
+            canProceed ? "bg-green-500 text-white" : "bg-white/90 text-purple-900"
           }`}
           style={{ minWidth: "48px" }}
         >
-          {selectedIngredients.length}<br/>/14
+          {selectedIngredients.length} / 14
         </div>
       </div>
 

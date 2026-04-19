@@ -34,7 +34,7 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
       style={{ background: "linear-gradient(160deg, #8B5CF6 0%, #7C3AED 40%, #6D28D9 100%)" }}
     >
       {/* 중앙 영역: 족자 + 그릇 + 버튼 */}
-      <div className="flex-1 flex items-center justify-center relative px-2 pt-4 pb-2">
+      <div className="flex-1 min-h-0 flex items-center justify-center relative px-2 pt-2 pb-1 overflow-hidden">
 
         {/* 왼쪽 스크롤 족자 */}
         <div className="absolute left-0 top-0 z-10 flex flex-col items-center" style={{ height: "40vh" }}>
@@ -105,11 +105,11 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
         {/* 상태 배지 */}
         <div
           className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs font-black px-2 py-1 rounded-full text-center leading-tight shadow ${
-            canSubmit ? "bg-green-400 text-white" : "bg-white/90 text-purple-900"
+            canSubmit ? "bg-green-500 text-white" : "bg-white/90 text-purple-900"
           }`}
           style={{ minWidth: "48px" }}
         >
-          {selectedSauces.length}<br/>/6
+          {selectedSauces.length} / 6
         </div>
       </div>
 
@@ -186,7 +186,7 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
                       : "0 2px 4px rgba(0,0,0,0.3)",
                   }}
                 >
-                  <span style={{ fontSize: "14px", lineHeight: 1.3, textAlign: "center", fontWeight: 700 }}>{sauce.name}</span>
+                  <span style={{ fontSize: "28px", lineHeight: 1.3, textAlign: "center", fontWeight: 700 }}>{sauce.name}</span>
                 </button>
               );
             })}

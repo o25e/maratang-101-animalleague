@@ -118,11 +118,11 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
         {/* 상태 배지 */}
         <div
           className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs font-black px-2 py-1 rounded-full text-center leading-tight shadow ${
-            canProceed ? "bg-green-400 text-white" : "bg-white/90 text-purple-900"
+            canProceed ? "bg-green-500 text-white" : "bg-white/90 text-purple-900"
           }`}
           style={{ minWidth: "48px" }}
         >
-          {selected ? selected.label : "미선택"}
+          {selected ? `${selected.level}단계` : "미선택"}
         </div>
       </div>
 
@@ -199,11 +199,8 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
                 <span style={{ fontSize: "22px", lineHeight: 1 }}>
                   {sp.peppers === 0 ? "✨" : "🌶️".repeat(Math.min(sp.peppers, 3))}
                 </span>
-                <span style={{ fontSize: "12px", lineHeight: 1.2, textAlign: "center", fontWeight: 700 }}>
-                  {sp.label}
-                </span>
-                <span style={{ fontSize: "10px", lineHeight: 1.2, textAlign: "center", opacity: 0.75 }}>
-                  {sp.desc}
+                <span style={{ fontSize: "28px", lineHeight: 1.2, textAlign: "center", fontWeight: 700 }}>
+                  {sp.level}단계
                 </span>
               </button>
             );
