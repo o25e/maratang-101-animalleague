@@ -55,14 +55,15 @@ export default function ResultScreen({
     ? isSauceGood ? "/img/game_resultb1.png" : "/img/game_resultb2.png"
     : isSauceGood ? "/img/game_resultb3.png" : "/img/game_resultb4.png";
 
-  const isBad      = ending.professorImage.includes("bad");
-  const isSurprise = ending.professorImage.includes("suprise");
-  const gradeColor = GRADE_COLORS[ending.grade] ?? "#6B7280";
+  const isBad       = ending.professorImage.includes("bad");
+  const isSurprise  = ending.professorImage.includes("surprise");
+  const isConfetti  = ending.score === 100;
+  const gradeColor  = GRADE_COLORS[ending.grade] ?? "#6B7280";
 
   const [c0, c1, c2] = ending.comments;
 
   const finalMessage =
-    ending.score >= 90 ? "거의 완벽했어. \n 조금만 더 다듬으면 A+도 가능할 것 같군!" :
+    ending.score >= 90 ? "거의 완벽했어. \n 조금만 더 다듬으면 100점도 가능할 것 같군!" :
     ending.score >= 60 ? "나쁘진 않아.. \n 좀 더 맛있게 다시 한번 말아주게!" :
     ending.score >= 30 ? "흠.. 정말 최선이었나? \n 다시 말아주게나." :
     "정말 맛이 없군!!! \n 다시 말아오게.";
@@ -81,7 +82,48 @@ export default function ResultScreen({
           65%  { transform: scale(1.15) rotate(3deg); }
           100% { opacity: 1; transform: scale(1) rotate(0deg); }
         }
+        @keyframes confetti-drop {
+          0%   { transform: translateY(-30px) rotate(0deg) scale(1); opacity: 1; }
+          100% { transform: translateY(680px) rotate(720deg) scale(0.5); opacity: 0; }
+        }
       `}</style>
+
+      {/* confetti — score 100점 전용 */}
+      {isConfetti && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 60 }}>
+          {[
+            { left: "8%",  delay: 0,    dur: 2.2, color: "#facc15", size: 10, round: false },
+            { left: "18%", delay: 0.3,  dur: 2.6, color: "#f87171", size: 8,  round: true  },
+            { left: "27%", delay: 0.6,  dur: 2.0, color: "#34d399", size: 12, round: false },
+            { left: "36%", delay: 0.1,  dur: 2.8, color: "#60a5fa", size: 9,  round: true  },
+            { left: "45%", delay: 0.9,  dur: 2.3, color: "#a78bfa", size: 11, round: false },
+            { left: "54%", delay: 0.4,  dur: 2.1, color: "#fb923c", size: 8,  round: true  },
+            { left: "63%", delay: 0.7,  dur: 2.5, color: "#f472b6", size: 10, round: false },
+            { left: "72%", delay: 0.2,  dur: 2.9, color: "#facc15", size: 7,  round: true  },
+            { left: "81%", delay: 0.5,  dur: 2.0, color: "#34d399", size: 12, round: false },
+            { left: "90%", delay: 0.8,  dur: 2.4, color: "#f87171", size: 9,  round: true  },
+            { left: "13%", delay: 1.1,  dur: 2.7, color: "#60a5fa", size: 8,  round: false },
+            { left: "31%", delay: 1.4,  dur: 2.2, color: "#a78bfa", size: 11, round: true  },
+            { left: "58%", delay: 1.2,  dur: 2.6, color: "#fb923c", size: 9,  round: false },
+            { left: "76%", delay: 1.5,  dur: 2.3, color: "#f472b6", size: 10, round: true  },
+            { left: "93%", delay: 1.0,  dur: 2.8, color: "#facc15", size: 7,  round: false },
+          ].map((p, i) => (
+            <div
+              key={i}
+              style={{
+                position: "absolute",
+                top: "-20px",
+                left: p.left,
+                width: p.size,
+                height: p.size,
+                backgroundColor: p.color,
+                borderRadius: p.round ? "50%" : "2px",
+                animation: `confetti-drop ${p.dur}s ease-in ${p.delay}s infinite`,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Layer 1: 배경 */}
       <img
@@ -151,7 +193,7 @@ export default function ResultScreen({
           />
           <div
             className="absolute flex flex-col justify-center gap-2 px-6"
-            style={{ top: "18%", left: "5%", right: "10%", bottom: "22%" }}
+            style={{ top: "18%", left: "3%", right: "10%", bottom: "22%" }}
           >
             {isFinalMessage ? (
               <p
