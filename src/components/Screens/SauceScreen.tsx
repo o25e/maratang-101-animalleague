@@ -122,7 +122,13 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
           <img
             src="/img/next_button-1.png"
             alt="이전"
-            className="h-12 object-contain rotate-180"
+            className="h-[73px] object-contain group-hover:hidden rotate-180"
+            draggable={false}
+          />
+          <img
+            src="/img/next_button.png"
+            alt="이전"
+            className="h-[73px] object-contain hidden group-hover:block rotate-180"
             draggable={false}
           />
         </button>
@@ -133,13 +139,13 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
           <img
             src="/img/next_button-1.png"
             alt="평가받기"
-            className="h-12 object-contain group-hover:hidden"
+            className="h-[73px] object-contain group-hover:hidden"
             draggable={false}
           />
           <img
             src="/img/next_button.png"
             alt="평가받기"
-            className="h-12 object-contain hidden group-hover:block"
+            className="h-[73px] object-contain hidden group-hover:block"
             draggable={false}
           />
         </button>

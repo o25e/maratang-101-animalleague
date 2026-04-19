@@ -115,13 +115,13 @@ export default function IngredientsScreen({
           <img
             src="/img/next_button-1.png"
             alt="다음"
-            className="h-12 object-contain group-hover:hidden"
+            className="h-[73px] object-contain group-hover:hidden"
             draggable={false}
           />
           <img
             src="/img/next_button.png"
             alt="다음"
-            className="h-12 object-contain hidden group-hover:block"
+            className="h-[73px] object-contain hidden group-hover:block"
             draggable={false}
           />
         </button>
