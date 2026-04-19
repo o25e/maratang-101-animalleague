@@ -29,22 +29,21 @@ export default function IngredientsScreen({
       <div className="flex-1 flex items-center justify-center relative px-2 pt-4 pb-2">
 
         {/* 왼쪽 스크롤 족자 */}
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 z-10">
-          <div className="w-12 h-3 rounded-full mx-auto shadow-md"
+        <div className="absolute left-0 top-0 z-10 flex flex-col items-center" style={{ height: "40vh" }}>
+          <div className="w-24 h-4 rounded-full shadow-md flex-shrink-0"
             style={{ background: "linear-gradient(90deg, #92400E, #D97706, #92400E)" }} />
-          <div className="flex flex-col items-center py-3 px-2 border-4 shadow-xl"
+          <div className="flex flex-col items-center justify-center flex-1 px-3 border-4 shadow-xl w-16"
             style={{
               background: "linear-gradient(180deg, #FEF3C7 0%, #FDE68A 50%, #FEF3C7 100%)",
               borderColor: "#92400E",
-              minHeight: "120px",
             }}>
             {"재료선택".split("").map((ch, i) => (
-              <span key={i} className="font-black text-amber-900 leading-tight" style={{ fontSize: "13px" }}>
+              <span key={i} className="font-black text-amber-900 leading-tight" style={{ fontSize: "22px" }}>
                 {ch}
               </span>
             ))}
           </div>
-          <div className="w-12 h-3 rounded-full mx-auto shadow-md"
+          <div className="w-24 h-4 rounded-full shadow-md flex-shrink-0"
             style={{ background: "linear-gradient(90deg, #92400E, #D97706, #92400E)" }} />
         </div>
 
