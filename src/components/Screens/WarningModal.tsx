@@ -37,7 +37,6 @@ export default function WarningModal({ message, visible }: WarningModalProps) {
           style={{
             color: "#9B2C2C",
             fontSize: "15px",
-            fontFamily: "'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif",
           }}
         >
           {message}

@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'BazziGame';
+  src: url('./src/assets/fonts/Bazzi OTF.otf') format('opentype'),
+       url('./src/assets/fonts/Bazzi TTF.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body, #root {
   margin: 0;
   padding: 0;
@@ -26,4 +34,5 @@ html, body, #root {
   position: relative;
   display: flex;
   flex-direction: column;
+  font-family: 'BazziGame', sans-serif;
 }
