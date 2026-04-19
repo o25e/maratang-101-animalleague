@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useGameState } from "./hooks/useGameState";
 import { useBGM } from "./hooks/useBGM";
+import MobileBanner from "./components/MobileBanner";
 
 const PRELOAD_IMAGES = [
   "/img/screen/game_result.webp",
@@ -50,10 +51,13 @@ export default function App() {
 
   if (screen === "title") {
     return (
-      <TitleScreen
-        onStart={() => setScreen("ingredients")}
-        onInstructions={() => setScreen("manual")}
-      />
+      <>
+        <MobileBanner />
+        <TitleScreen
+          onStart={() => setScreen("ingredients")}
+          onInstructions={() => setScreen("manual")}
+        />
+      </>
     );
   }
 
