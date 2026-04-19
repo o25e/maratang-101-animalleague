@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Ending, Ingredient } from "../../types/game";
 import { useSound } from "../../hooks/useSound";
 
@@ -25,8 +25,14 @@ export default function ResultScreen({
   selectedSauces,
   onReset,
 }: ResultScreenProps) {
-  const { playPop } = useSound();
+  const { playPop, playBoom, playText } = useSound();
   const [restartHovered, setRestartHovered] = useState(false);
+
+  useEffect(() => {
+    const ids = [500, 2000, 3500].map(delay => setTimeout(playText, delay));
+    const boomId = setTimeout(playBoom, 5200);
+    return () => { ids.forEach(clearTimeout); clearTimeout(boomId); };
+  }, [playText, playBoom]);
   const isMalatangGood = ending.score > 50;
   const isSauceGood =
     !selectedSauces.includes("cilantro") && !selectedSauces.includes("mintchoco");
@@ -128,19 +134,19 @@ export default function ResultScreen({
           >
             <p
               className="font-semibold leading-snug text-gray-800"
-              style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.5s ease forwards", animationDelay: "0.2s" }}
+              style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.5s ease forwards", animationDelay: "0.5s" }}
             >
               {c0}
             </p>
             <p
               className="font-semibold leading-snug text-gray-800"
-              style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.5s ease forwards", animationDelay: "1.0s" }}
+              style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.5s ease forwards", animationDelay: "2.0s" }}
             >
               {c1}
             </p>
             <p
               className="font-semibold leading-snug text-gray-800"
-              style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.5s ease forwards", animationDelay: "1.8s" }}
+              style={{ fontSize: "20px", opacity: 0, animation: "fadeSlideIn 0.5s ease forwards", animationDelay: "3.5s" }}
             >
               {c2}
             </p>
@@ -150,7 +156,7 @@ export default function ResultScreen({
         {/* 최종 성적 — 말풍선 아래 딱 등장 */}
         <div
           className="mt-2 flex items-center gap-3 pl-2"
-          style={{ opacity: 0, animation: "gradePop 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards", animationDelay: "2.8s" }}
+          style={{ opacity: 0, animation: "gradePop 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards", animationDelay: "5.2s" }}
         >
           <span
             className="font-black leading-none"

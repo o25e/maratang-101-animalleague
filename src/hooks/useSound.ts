@@ -16,6 +16,8 @@ export function useSound(volume = DEFAULT_VOLUME) {
   const playTransition = useCallback(() => playSound("/sounds/transition.mp3", Math.min(volume * 2, 1)), [volume]);
   const playWarning    = useCallback(() => playSound("/sounds/warning.mp3",    volume), [volume]);
   const playPop        = useCallback(() => playSound("/sounds/pop.mp3",        volume), [volume]);
+  const playBoom       = useCallback(() => playSound("/sounds/boom.mp3",       volume), [volume]);
+  const playText       = useCallback(() => playSound("/sounds/text.mp3",       volume), [volume]);
 
-  return { playHover, playClick, playTransition, playWarning, playPop };
+  return { playHover, playClick, playTransition, playWarning, playPop, playBoom, playText };
 }
