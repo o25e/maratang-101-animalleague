@@ -44,7 +44,7 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
   return (
     <div
       className="w-full h-full flex flex-col overflow-hidden select-none"
-      style={{ background: "linear-gradient(160deg, #8B5CF6 0%, #7C3AED 40%, #6D28D9 100%)" }}
+      style={{ backgroundImage: "url('/img/screen/game_bg1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
       {/* 중앙 영역: 족자 + 그릇 + 버튼 */}
       <div className="flex-1 flex items-center justify-center relative px-2 pt-4 pb-2">
@@ -171,8 +171,8 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
       <div
         className="px-2 py-3 border-t-4 flex-shrink-0"
         style={{
-          background: "linear-gradient(180deg, rgba(109,40,217,0.6) 0%, rgba(76,29,149,0.8) 100%)",
-          borderColor: "#4C1D95",
+          background: "rgba(253,186,116,0.85)",
+          borderColor: "#FB923C",
         }}
       >
         <div className="flex gap-1.5 justify-center">
