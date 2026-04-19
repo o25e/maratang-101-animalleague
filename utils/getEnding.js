@@ -7,7 +7,7 @@ export function getEnding(ingredients, spiceLevel, sauces) {
 
   if (hasTrap) return {
     grade: "F", title: "퇴학 엔딩", emotion: "😡",
-    comment: "이게 마라탕이야, 장난이야?! 민트초코는 디저트고 팽이버섯은… 잠깐, 이거 먹으면 죽어? 자네 퇴학 처리야. 다시는 내 강의실 오지 말게.",
+    comment: "이게 마라탕이야, 장난이야?! 초콜릿은 디저트고 팽이버섯은… 잠깐, 이거 먹으면 죽어? 자네 퇴학 처리야. 다시는 내 강의실 오지 말게.",
     gradeColor: "text-red-600", gradeBorder: "border-red-400", bg: "from-red-200 to-red-100",
   };
 

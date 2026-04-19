@@ -11,15 +11,6 @@ interface IngredientsScreenProps {
   onNext: () => void;
 }
 
-// index 기반 황금각 나선으로 그릇 안에 재료 분산 배치
-function getIngredientOffset(i: number) {
-  const angle = (i * 137.5 * Math.PI) / 180;
-  const radius = 18 + (i % 3) * 14;
-  return {
-    x: Math.round(Math.cos(angle) * radius),
-    y: Math.round(Math.sin(angle) * radius * 0.5),
-  };
-}
 
 export default function IngredientsScreen({
   selectedIngredients,
@@ -59,34 +50,29 @@ export default function IngredientsScreen({
 
         {/* 중앙 마라탕 그릇 (PNG 이미지 + 재료 오버레이) */}
         <div className={`transition-transform duration-200 ${bowlPop ? "scale-105" : "scale-100"}`}>
-          <div className="relative" style={{ width: "260px", height: "220px" }}>
+          <div className="relative" style={{ width: "460px", height: "420px" }}>
             <img
               src="/img/bowl_big.png"
               alt="그릇"
               className="w-full h-full object-contain"
               draggable={false}
             />
-            {/* 선택된 재료 이미지 — 그릇 중앙에 겹쳐서 렌더링 */}
-            {selectedIngredients.map((ing, i) => {
-              const { x, y } = getIngredientOffset(i);
-              return (
-                <img
-                  key={ing.id}
-                  src={ing.image}
-                  alt={ing.name}
-                  draggable={false}
-                  className="absolute object-contain drop-shadow-md"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    left: `calc(50% + ${x}px - 20px)`,
-                    top: `calc(58% + ${y}px - 20px)`,
-                    zIndex: 10 + i,
-                    transform: `rotate(${(i * 43) % 60 - 30}deg)`,
-                  }}
-                />
-              );
-            })}
+            {/* 선택된 재료 이미지 — 각 재료의 고정 position 데이터로 렌더링 */}
+            {selectedIngredients.map((ing, i) => (
+              <img
+                key={ing.id}
+                src={ing.image}
+                alt={ing.name}
+                draggable={false}
+                className="absolute object-contain drop-shadow-md"
+                style={{
+                  top: ing.position.top,
+                  left: ing.position.left,
+                  width: ing.position.width,
+                  zIndex: 10 + i,
+                }}
+              />
+            ))}
           </div>
         </div>
 

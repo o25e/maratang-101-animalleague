@@ -18,12 +18,12 @@ export const NOODLES = [
 
 export const OTHERS = [
   { id: "sweetrice",   name: "고구마떡", emoji: "🍡", type: "other" },
-  { id: "cheesetteok", name: "치즈떡",   emoji: "🧀", type: "other" },
+  { id: "cheesetteok", name: "연근",   emoji: "🧀", type: "other" },
   { id: "tofu",        name: "두부",     emoji: "⬜", type: "other" },
 ];
 
 export const TRAPS = [
-  { id: "mintchoco", name: "민트초코", emoji: "🍫", type: "trap" },
+  { id: "mintchoco", name: "초콜릿", emoji: "🍫", type: "trap" },
   { id: "mushroom",  name: "팽이버섯", emoji: "🍄", type: "trap" },
 ];
 
@@ -31,11 +31,11 @@ export const ALL_ITEMS = [...MEATS, ...VEGGIES, ...NOODLES, ...OTHERS, ...TRAPS]
 
 export const SAUCES = [
   { id: "peanut",      name: "땅콩소스", emoji: "🥜" },
+  { id: "buldak",      name: "불닭소스", emoji: "🌶️" },
   { id: "chilioil",    name: "고추기름", emoji: "🌶️" },
-  { id: "sugar",       name: "설탕",     emoji: "🍬" },
-  { id: "vinegar",     name: "식초",     emoji: "🍶" },
+  { id: "mintchoco",   name: "민트초코", emoji: "🍫" },
   { id: "cilantro",    name: "고수",     emoji: "🌿" },
-  { id: "greenonion",  name: "파",       emoji: "🧅" },
+  { id: "greenonion",  name: "대파",     emoji: "🧅" },
 ];
 
 export const SPICE_LEVELS = [

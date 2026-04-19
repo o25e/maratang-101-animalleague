@@ -7,6 +7,7 @@ export interface Ingredient {
   emoji: string;
   image: string;
   type: IngredientType;
+  position: { top: string; left: string; width: string };
 }
 
 // ─── 소스 ────────────────────────────────────────────────────────────────────
