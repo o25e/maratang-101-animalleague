@@ -4,13 +4,13 @@ import { Ingredient } from "../../types/game";
 import WarningModal from "./WarningModal";
 import { useSound } from "../../hooks/useSound";
 
-const OVERLAY_OPACITY: Record<number, number> = { 0: 0, 1: 0.25, 2: 0.40, 3: 0.65, 4: 0.80 };
+const OVERLAY_OPACITY: Record<number, number> = { 0: 0.15, 1: 0.25, 2: 0.40, 3: 0.65, 4: 0.80 };
 
 // 오버레이 영역 미세조정 — top/left/right/bottom 으로 그릇 안쪽에 맞게 수정하세요
 const OVERLAY_STYLE = {
-  top:    "7%",   // 위에서 얼마나 내려올지 (그릇 림 아래부터 시작)
-  left:   "16%",    // 왼쪽 여백
-  right:  "16%",    // 오른쪽 여백
+  top:    "15%",   // 위에서 얼마나 내려올지 (그릇 림 아래부터 시작)
+  left:   "17%",    // 왼쪽 여백
+  right:  "17%",    // 오른쪽 여백
   bottom: "42%",    // 아래 여백
 };
 
