@@ -11,6 +11,11 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: url('./img/click_cursor.png'), auto;
+}
+
+*, *:hover, *:active, *:focus {
+  cursor: url('./img/click_cursor.png'), auto !important;
 }
 
 #game-viewport {
