@@ -20,7 +20,7 @@
 
 > "이론만으론 부족하네. 직접 맛을 봐야 학점이 나오지."
 
-### **[→ 마라학개론 수강 신청하기](https://your-vercel-url.vercel.app)**
+### **[→ 마라학개론 수강 신청하기](https://grademytang-animalleauge.vercel.app/)**
 
 ---
 
