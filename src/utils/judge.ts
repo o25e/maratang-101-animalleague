@@ -27,8 +27,8 @@ export function getEnding(
       grade: "F",
       title: "최악의 선택 엔딩",
       emotion: "🤮",
-      comment: "학계에서 퇴출감일세.",
-      comments: ["학계에서 퇴출감일세.", "", ""],
+      comment: "어떻게 이런 맛이!",
+      comments: ["어떻게 이런 맛이!", "이건 먹을 수 없어!", "학계에서 퇴출감일세."],
       gradeColor: "text-red-700",
       gradeBorder: "border-red-600",
       bg: "from-red-300 to-red-100",
@@ -121,8 +121,8 @@ export function getEnding(
   if (score === 100) {
     return {
       grade: "A+", title: "마라탕 장인 엔딩", emotion: "🏆",
-      comment: "이거지, 아주 완벽해.",
-      comments: ["이거지, 아주 완벽해.", "", ""],
+      comment: "이거지, 아주 완벽해!",
+      comments: ["이거지, 아주 완벽해!", "정말 맛있군.", "자네는 마라탕 장인일세!"],
       gradeColor: "text-yellow-500", gradeBorder: "border-yellow-400", bg: "from-yellow-200 to-yellow-50",
       score, professorImage: PROFESSOR_IMAGES.happy,
     };

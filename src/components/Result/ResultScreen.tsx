@@ -66,7 +66,7 @@ export default function ResultScreen({
     ending.score >= 90 ? "거의 완벽했어. \n 조금만 더 다듬으면 100점도 가능할 것 같군!" :
     ending.score >= 60 ? "나쁘진 않아.. \n 좀 더 맛있게 다시 한번 말아주게!" :
     ending.score >= 30 ? "흠.. 정말 최선이었나? \n 다시 말아주게나." :
-    "정말 맛이 없군!!! \n 다시 말아오게.";
+    "정말 맛이 없군!!! \n 다시 말아오게나.";
 
   return (
     <div className="relative w-full h-full select-none overflow-hidden" style={{ visibility: bgReady ? "visible" : "hidden" }}>
