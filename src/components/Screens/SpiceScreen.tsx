@@ -61,7 +61,7 @@ export default function SpiceScreen({ spiceLevel, onSelect, onBack, onNext }: Sp
         {/* 중앙 그릇 — 맵기 시각화 */}
         <div className="transition-transform duration-200">
           <div className="relative" style={{ width: "260px", height: "220px" }}>
-            <WarningModal message="맵기 단계를 선택해야지요!" visible={showWarning} />
+            <WarningModal message="맵기 단계를 선택해야 합니다!" visible={showWarning} />
 
             {/* 상단 림 */}
             <div

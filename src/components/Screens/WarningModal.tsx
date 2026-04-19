@@ -11,7 +11,7 @@ export default function WarningModal({ message, visible }: WarningModalProps) {
       <div
         className="relative flex flex-col items-center px-6 py-5 rounded-2xl"
         style={{
-          background: "linear-gradient(180deg, #FAF5FF 0%, #FFFFFF 100%)",
+          background: "linear-gradient(180deg, rgba(250,245,255,0.9) 0%, rgba(255,255,255,0.9) 100%)",
           border: "2px dashed #C084FC",
           boxShadow: "0 8px 32px rgba(139,92,246,0.25), 0 2px 8px rgba(0,0,0,0.15)",
           minWidth: "200px",
@@ -33,7 +33,7 @@ export default function WarningModal({ message, visible }: WarningModalProps) {
 
         {/* 경고 메시지 */}
         <p
-          className="text-center font-bold leading-snug mt-2"
+          className="text-center font-bold leading-snug mt-2 whitespace-pre-line"
           style={{
             color: "#9B2C2C",
             fontSize: "15px",

@@ -32,7 +32,7 @@ export default function IngredientsScreen({
 
   function handleNext() {
     if (!canProceed) {
-      setWarningMsg("재료를 적어도 다섯 가지는 넣어야지요!");
+      setWarningMsg("재료를 적어도\n다섯 가지는 넣어야 합니다!");
       setShowWarning(true);
       return;
     }

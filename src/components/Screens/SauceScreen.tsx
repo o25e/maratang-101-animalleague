@@ -64,7 +64,7 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
         {/* 중앙 그릇 (PNG) + 선택된 소스 오버레이 */}
         <div className="transition-transform duration-200">
           <div className="relative" style={{ width: "400px", height: "360px" }}>
-            <WarningModal message="소스를 적어도 두 가지는 넣어야지요!" visible={showWarning} />
+            <WarningModal message={"소스를 적어도\n두 가지는 넣어야 합니다!"} visible={showWarning} />
             <img
               src="/img/bowl_sauce.png"
               alt="소스 그릇"
