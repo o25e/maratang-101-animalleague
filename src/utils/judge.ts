@@ -5,10 +5,11 @@ const PROFESSOR_IMAGES = {
   soso:     "/img/professor_soso.png",
   smile:    "/img/professor_smile.png",
   happy:    "/img/professor_happy.png",
-  surprise: "/img/professor_suprise.png",
+  surprise: "/img/professor_surprise.png",
 } as const;
 
 export function getProfessorImage(score: number): string {
+  if (score < 15)  return PROFESSOR_IMAGES.surprise;
   if (score <= 20) return PROFESSOR_IMAGES.bad;
   if (score <= 50) return PROFESSOR_IMAGES.soso;
   if (score <= 80) return PROFESSOR_IMAGES.smile;
@@ -36,7 +37,7 @@ export function getEnding(
       gradeBorder: "border-red-600",
       bg: "from-red-300 to-red-100",
       score: 0,
-      professorImage: PROFESSOR_IMAGES.bad,
+      professorImage: PROFESSOR_IMAGES.surprise,
     };
   }
 
@@ -169,6 +170,6 @@ export function getEnding(
     grade: "F", title: "낙제 엔딩", emotion: "😡",
     comment, comments,
     gradeColor: "text-red-700", gradeBorder: "border-red-600", bg: "from-red-300 to-red-100",
-    score, professorImage: PROFESSOR_IMAGES.bad,
+    score, professorImage: PROFESSOR_IMAGES.surprise,
   };
 }
