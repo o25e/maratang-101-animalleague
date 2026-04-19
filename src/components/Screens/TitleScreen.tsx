@@ -1,11 +1,18 @@
+import { useState } from "react";
+
 interface TitleScreenProps {
   onStart: () => void;
   onInstructions: () => void;
 }
 
 export default function TitleScreen({ onStart, onInstructions }: TitleScreenProps) {
+  const [startHover, setStartHover] = useState(false);
+  const [manualHover, setManualHover] = useState(false);
+
   return (
     <div className="w-full h-full bg-gradient-to-b from-amber-200 via-orange-100 to-amber-300 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      {/* preload ManualScreen image */}
+      <img src="/img/screen/game_rule.png" className="hidden" aria-hidden alt="" />
       {/* floating bg emoji */}
       <div className="absolute inset-0 pointer-events-none select-none" aria-hidden>
         {["🌶️","🍜","🥢","🫕","🥩","🌿","🧄","🥬"].map((e, i) => (
@@ -48,20 +55,30 @@ export default function TitleScreen({ onStart, onInstructions }: TitleScreenProp
         </div>
 
         {/* buttons */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-center gap-3">
           <button
             onClick={onStart}
-            className="w-full bg-red-500 hover:bg-red-600 active:scale-95 active:border-b-0 active:translate-y-1
-                       text-white font-black text-xl py-4 rounded-2xl
-                       border-b-4 border-red-800 shadow-md transition-all duration-75">
-             &nbsp;게임 시작
+            onMouseEnter={() => setStartHover(true)}
+            onMouseLeave={() => setStartHover(false)}
+            className="active:scale-95 transition-transform duration-75 bg-transparent border-none p-0">
+            <img
+              src={startHover ? "/img/button_start_hover.png" : "/img/button_start.png"}
+              alt="시작하기"
+              className="w-64 select-none"
+              draggable={false}
+            />
           </button>
           <button
             onClick={onInstructions}
-            className="w-full bg-orange-400 hover:bg-orange-500 active:scale-95 active:border-b-0 active:translate-y-1
-                       text-white font-black text-xl py-4 rounded-2xl
-                       border-b-4 border-orange-700 shadow-md transition-all duration-75">
-            &nbsp;게임 방법
+            onMouseEnter={() => setManualHover(true)}
+            onMouseLeave={() => setManualHover(false)}
+            className="active:scale-95 transition-transform duration-75 bg-transparent border-none p-0">
+            <img
+              src={manualHover ? "/img/button_manual_hover.png" : "/img/button_manual.png"}
+              alt="게임방법"
+              className="w-64 select-none"
+              draggable={false}
+            />
           </button>
         </div>
       </div>

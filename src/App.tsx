@@ -1,6 +1,7 @@
 import { useGameState } from "./hooks/useGameState";
 import TitleScreen        from "./components/Screens/TitleScreen";
 import InstructionsScreen from "./components/Screens/InstructionsScreen";
+import ManualScreen       from "./components/Screens/ManualScreen";
 import IngredientsScreen  from "./components/Screens/IngredientsScreen";
 import SpiceScreen        from "./components/Screens/SpiceScreen";
 import SauceScreen        from "./components/Screens/SauceScreen";
@@ -24,9 +25,13 @@ export default function App() {
     return (
       <TitleScreen
         onStart={() => setScreen("ingredients")}
-        onInstructions={() => setScreen("instructions")}
+        onInstructions={() => setScreen("manual")}
       />
     );
+  }
+
+  if (screen === "manual") {
+    return <ManualScreen onStart={() => setScreen("ingredients")} />;
   }
 
   if (screen === "instructions") {

@@ -43,6 +43,7 @@ export interface Ending {
 export type GameScreen =
   | "title"
   | "instructions"
+  | "manual"
   | "ingredients"
   | "spice"
   | "sauce"
