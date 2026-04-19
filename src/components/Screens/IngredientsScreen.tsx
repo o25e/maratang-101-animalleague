@@ -45,7 +45,7 @@ export default function IngredientsScreen({
   return (
     <div
       className="w-full h-full flex flex-col overflow-hidden select-none"
-      style={{ backgroundImage: "url('/img/screen/game_bg1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+      style={{ backgroundImage: "url('/img/screen/game_bg1.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
       {/* 중앙: 족자 + 그릇 + 다음 버튼 */}
       <div className="flex-1 min-h-0 flex items-center justify-center relative px-2 pt-2 pb-1 overflow-hidden">
@@ -73,7 +73,7 @@ export default function IngredientsScreen({
         <div className={`transition-transform duration-200 ${bowlPop ? "scale-105" : "scale-100"} mt-20`}>
           <div className="relative" style={{ width: "min(460px, 75vw)", height: "min(420px, 37vh)" }}>
             <img
-              src="/img/bowl_big.png"
+              src="/img/bowl_big.webp"
               alt="그릇"
               className="w-full h-full object-contain"
               draggable={false}
@@ -116,13 +116,13 @@ export default function IngredientsScreen({
           className="group transition-all duration-75 active:scale-90"
         >
           <img
-            src="/img/next_button-1.png"
+            src="/img/next_button-1.webp"
             alt="다음"
             className="h-[73px] object-contain group-hover:hidden"
             draggable={false}
           />
           <img
-            src="/img/next_button.png"
+            src="/img/next_button.webp"
             alt="다음"
             className="h-[73px] object-contain hidden group-hover:block"
             draggable={false}

@@ -12,7 +12,7 @@ export default function ManualScreen({ onStart }: ManualScreenProps) {
   return (
     <div className="w-full h-full relative overflow-hidden">
       <img
-        src="/img/screen/game_rule.png"
+        src="/img/screen/game_rule.webp"
         alt="게임 방법"
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
@@ -24,7 +24,7 @@ export default function ManualScreen({ onStart }: ManualScreenProps) {
           onMouseLeave={() => setHover(false)}
           className="active:scale-95 transition-transform duration-75 bg-transparent border-none p-0">
           <img
-            src={hover ? "/img/button_start_hover.png" : "/img/button_start.png"}
+            src={hover ? "/img/button_start_hover.webp" : "/img/button_start.webp"}
             alt="시작하기"
             className="w-64 select-none"
             draggable={false}

@@ -44,7 +44,7 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
   return (
     <div
       className="w-full h-full flex flex-col overflow-hidden select-none"
-      style={{ backgroundImage: "url('/img/screen/game_bg1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+      style={{ backgroundImage: "url('/img/screen/game_bg1.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
       {/* 중앙 영역: 족자 + 그릇 + 버튼 */}
       <div className="flex-1 flex items-center justify-center relative px-2 pt-4 pb-2">
@@ -74,13 +74,13 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
           />
         </div>
 
-        {/* 중앙 그릇 — bowl_big.png + 재료 + 빨간 오버레이 */}
+        {/* 중앙 그릇 — bowl_big.webp + 재료 + 빨간 오버레이 */}
         <div className="transition-transform duration-200 mt-20">
           <div className="relative" style={{ width: "min(460px, 75vw)", height: "min(420px, 37vh)" }}>
             <WarningModal message={`맵기 단계를\n선택해야 합니다!`} visible={showWarning} />
 
             <img
-              src="/img/bowl_big.png"
+              src="/img/bowl_big.webp"
               alt="그릇"
               className="w-full h-full object-contain"
               draggable={false}
@@ -136,13 +136,13 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
           className="group transition-all duration-75 active:scale-90"
         >
           <img
-            src="/img/next_button-1.png"
+            src="/img/next_button-1.webp"
             alt="이전"
             className="h-[73px] object-contain group-hover:hidden rotate-180"
             draggable={false}
           />
           <img
-            src="/img/next_button.png"
+            src="/img/next_button.webp"
             alt="이전"
             className="h-[73px] object-contain hidden group-hover:block rotate-180"
             draggable={false}
@@ -153,13 +153,13 @@ export default function SpiceScreen({ spiceLevel, selectedIngredients, onSelect,
           className="group transition-all duration-75 active:scale-90"
         >
           <img
-            src="/img/next_button-1.png"
+            src="/img/next_button-1.webp"
             alt="다음"
             className="h-[73px] object-contain group-hover:hidden"
             draggable={false}
           />
           <img
-            src="/img/next_button.png"
+            src="/img/next_button.webp"
             alt="다음"
             className="h-[73px] object-contain hidden group-hover:block"
             draggable={false}

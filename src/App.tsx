@@ -3,11 +3,11 @@ import { useGameState } from "./hooks/useGameState";
 import { useBGM } from "./hooks/useBGM";
 
 const PRELOAD_IMAGES = [
-  "/img/screen/game_result.png",
-  "/img/game_resultb1.png",
-  "/img/game_resultb2.png",
-  "/img/game_resultb3.png",
-  "/img/game_resultb4.png",
+  "/img/screen/game_result.webp",
+  "/img/game_resultb1.webp",
+  "/img/game_resultb2.webp",
+  "/img/game_resultb3.webp",
+  "/img/game_resultb4.webp",
 ];
 import TitleScreen        from "./components/Screens/TitleScreen";
 import InstructionsScreen from "./components/Screens/InstructionsScreen";

@@ -1,11 +1,11 @@
 import { Ingredient, Ending } from "../types/game";
 
 const PROFESSOR_IMAGES = {
-  bad:      "/img/professor_bad.png",
-  soso:     "/img/professor_soso.png",
-  smile:    "/img/professor_smile.png",
-  happy:    "/img/professor_happy.png",
-  surprise: "/img/professor_surprise.png",
+  bad:      "/img/professor_bad.webp",
+  soso:     "/img/professor_soso.webp",
+  smile:    "/img/professor_smile.webp",
+  happy:    "/img/professor_happy.webp",
+  surprise: "/img/professor_surprise.webp",
 } as const;
 
 export function getProfessorImage(score: number): string {

@@ -14,12 +14,12 @@ export default function TastingScreen({ ending, selectedSauces, onDone }: Tastin
   const isMalatangGood = ending.score > 50;
   const isSauceGood = !selectedSauces.includes("cilantro") && !selectedSauces.includes("mintchoco");
   const resultImage = isMalatangGood
-    ? isSauceGood ? "/img/game_resultb1.png" : "/img/game_resultb2.png"
-    : isSauceGood ? "/img/game_resultb3.png" : "/img/game_resultb4.png";
+    ? isSauceGood ? "/img/game_resultb1.webp" : "/img/game_resultb2.webp"
+    : isSauceGood ? "/img/game_resultb3.webp" : "/img/game_resultb4.webp";
 
   useEffect(() => {
     const img = new Image();
-    img.src = "/img/screen/game_result.png";
+    img.src = "/img/screen/game_result.webp";
   }, []);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function TastingScreen({ ending, selectedSauces, onDone }: Tastin
 
       {/* 배경 */}
       <img
-        src="/img/screen/game_result.png"
+        src="/img/screen/game_result.webp"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0 }}
@@ -125,7 +125,7 @@ export default function TastingScreen({ ending, selectedSauces, onDone }: Tastin
       {/* 교수님 — ResultScreen과 동일한 위치/크기 */}
       <div className="absolute top-6 right-36" style={{ zIndex: 10 }}>
         <img
-          src="/img/professor_soso.png"
+          src="/img/professor_soso.webp"
           alt="교수님"
           style={{
             width: "345px",
@@ -141,7 +141,7 @@ export default function TastingScreen({ ending, selectedSauces, onDone }: Tastin
 
       {/* 교수님 손 — 좌우 반전, 교수님 왼쪽, 마라탕 위 */}
       <img
-        src="/img/professor_hand.png"
+        src="/img/professor_hand.webp"
         alt="교수님 손"
         className="absolute"
         style={{

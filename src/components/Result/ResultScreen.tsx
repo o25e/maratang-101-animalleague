@@ -32,7 +32,7 @@ export default function ResultScreen({
   const [isFinalMessage, setIsFinalMessage] = useState(false);
   const [bgReady, setBgReady] = useState(() => {
     const img = new Image();
-    img.src = "/img/screen/game_result.png";
+    img.src = "/img/screen/game_result.webp";
     return img.complete;
   });
 
@@ -52,8 +52,8 @@ export default function ResultScreen({
     !selectedSauces.includes("cilantro") && !selectedSauces.includes("mintchoco");
 
   const resultImage = isMalatangGood
-    ? isSauceGood ? "/img/game_resultb1.png" : "/img/game_resultb2.png"
-    : isSauceGood ? "/img/game_resultb3.png" : "/img/game_resultb4.png";
+    ? isSauceGood ? "/img/game_resultb1.webp" : "/img/game_resultb2.webp"
+    : isSauceGood ? "/img/game_resultb3.webp" : "/img/game_resultb4.webp";
 
   const isBad       = ending.professorImage.includes("bad");
   const isSurprise  = ending.professorImage.includes("surprise");
@@ -127,7 +127,7 @@ export default function ResultScreen({
 
       {/* Layer 1: 배경 */}
       <img
-        src="/img/screen/game_result.png"
+        src="/img/screen/game_result.webp"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
         onLoad={() => setBgReady(true)}
@@ -187,7 +187,7 @@ export default function ResultScreen({
       <div className="absolute top-16 left-16" style={{ zIndex: 20 }}>
         <div className="relative">
           <img
-            src="/img/chat2.png"
+            src="/img/chat2.webp"
             alt="말풍선"
             style={{ width: "390px", objectFit: "contain" }}
           />
@@ -257,7 +257,7 @@ export default function ResultScreen({
           className="bg-transparent border-none p-0 cursor-pointer transition-all duration-75 active:scale-95 active:translate-y-1"
         >
           <img
-            src={restartHovered ? "/img/button_restart_hover.png" : "/img/button_restart.png"}
+            src={restartHovered ? "/img/button_restart_hover.webp" : "/img/button_restart.webp"}
             alt="다시 도전"
             style={{ width: 230 }}
           />

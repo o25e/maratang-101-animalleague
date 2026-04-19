@@ -34,7 +34,7 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
   return (
     <div
       className="w-full h-full flex flex-col overflow-hidden select-none"
-      style={{ backgroundImage: "url('/img/screen/game_bg1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+      style={{ backgroundImage: "url('/img/screen/game_bg1.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
       {/* 중앙 영역: 족자 + 그릇 + 버튼 */}
       <div className="flex-1 min-h-0 flex items-center justify-center relative px-2 pt-2 pb-1 overflow-hidden">
@@ -69,7 +69,7 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
           <div className="relative" style={{ width: "400px", height: "360px" }}>
             <WarningModal message={"소스를 적어도\n두 가지는 넣어야 합니다!"} visible={showWarning} />
             <img
-              src="/img/bowl_sauce.png"
+              src="/img/bowl_sauce.webp"
               alt="소스 그릇"
               className="w-full h-full object-contain"
               draggable={false}
@@ -123,13 +123,13 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
           className="group transition-all duration-75 active:scale-90"
         >
           <img
-            src="/img/next_button-1.png"
+            src="/img/next_button-1.webp"
             alt="이전"
             className="h-[73px] object-contain group-hover:hidden rotate-180"
             draggable={false}
           />
           <img
-            src="/img/next_button.png"
+            src="/img/next_button.webp"
             alt="이전"
             className="h-[73px] object-contain hidden group-hover:block rotate-180"
             draggable={false}
@@ -140,13 +140,13 @@ export default function SauceScreen({ selectedSauces, onToggle, onBack, onSubmit
           className="group transition-all duration-75 active:scale-90"
         >
           <img
-            src="/img/next_button-1.png"
+            src="/img/next_button-1.webp"
             alt="평가받기"
             className="h-[73px] object-contain group-hover:hidden"
             draggable={false}
           />
           <img
-            src="/img/next_button.png"
+            src="/img/next_button.webp"
             alt="평가받기"
             className="h-[73px] object-contain hidden group-hover:block"
             draggable={false}

@@ -14,10 +14,10 @@ export default function TitleScreen({ onStart, onInstructions }: TitleScreenProp
   return (
     <div
       className="w-full h-full relative overflow-hidden flex flex-col items-center justify-end"
-      style={{ backgroundImage: "url('/img/screen/game_start.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+      style={{ backgroundImage: "url('/img/screen/game_start.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
     >
       {/* preload ManualScreen image */}
-      <img src="/img/screen/game_rule.png" className="hidden" aria-hidden alt="" />
+      <img src="/img/screen/game_rule.webp" className="hidden" aria-hidden alt="" />
 
       {/* buttons */}
       <div className="absolute z-10 flex flex-col items-center" style={{ right: "2%", bottom: "1%", gap: "0px" }}>
@@ -27,7 +27,7 @@ export default function TitleScreen({ onStart, onInstructions }: TitleScreenProp
           onMouseLeave={() => setStartHover(false)}
           className="active:scale-95 transition-transform duration-75 bg-transparent border-none p-0">
           <img
-            src={startHover ? "/img/button_start_hover.png" : "/img/button_start.png"}
+            src={startHover ? "/img/button_start_hover.webp" : "/img/button_start.webp"}
             alt="시작하기"
             className="w-64 select-none"
             draggable={false}
@@ -39,7 +39,7 @@ export default function TitleScreen({ onStart, onInstructions }: TitleScreenProp
           onMouseLeave={() => setManualHover(false)}
           className="active:scale-95 transition-transform duration-75 bg-transparent border-none p-0">
           <img
-            src={manualHover ? "/img/button_manual_hover.png" : "/img/button_manual.png"}
+            src={manualHover ? "/img/button_manual_hover.webp" : "/img/button_manual.webp"}
             alt="게임방법"
             className="w-64 select-none"
             draggable={false}
