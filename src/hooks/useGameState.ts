@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Ingredient, Ending, GameScreen } from "../types/game";
+import { Ingredient, Ending, GameScreen, UserInfo } from "../types/game";
 import { getEnding } from "../utils/judge";
+import { updateRanking } from "../utils/ranking";
 
 interface GameState {
   screen: GameScreen;
@@ -17,7 +18,7 @@ interface GameState {
   reset: () => void;
 }
 
-export function useGameState(): GameState {
+export function useGameState(userInfo: UserInfo | null): GameState {
   const [screen, setScreen]                           = useState<GameScreen>("title");
   const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([]);
   const [spiceLevel, setSpiceLevel]                   = useState<number | null>(null);
@@ -41,8 +42,12 @@ export function useGameState(): GameState {
     );
 
   const submitResult = () => {
-    setEnding(getEnding(selectedIngredients, spiceLevel, selectedSauces));
+    const newEnding = getEnding(selectedIngredients, spiceLevel, selectedSauces);
+    setEnding(newEnding);
     setScreen("tasting");
+    if (userInfo) {
+      updateRanking(userInfo, newEnding.score);
+    }
   };
 
   const reset = () => {

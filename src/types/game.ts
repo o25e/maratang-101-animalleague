@@ -42,6 +42,19 @@ export interface Ending {
   professorImage: string;
 }
 
+// ─── 유저 & 랭킹 ─────────────────────────────────────────────────────────────
+export interface UserInfo {
+  id: string;
+  university: string;
+}
+
+export interface RankEntry {
+  id: string;
+  university: string;
+  high_score: number;
+  play_count: number;
+}
+
 // ─── 화면 라우팅 ──────────────────────────────────────────────────────────────
 export type GameScreen =
   | "title"

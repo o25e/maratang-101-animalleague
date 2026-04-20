@@ -8,6 +8,7 @@ interface ResultScreenProps {
   spiceLevel: number | null;
   selectedSauces: string[];
   onReset: () => void;
+  onShowRanking: () => void;
 }
 
 const GRADE_COLORS: Record<string, string> = {
@@ -26,9 +27,11 @@ export default function ResultScreen({
   ending,
   selectedSauces,
   onReset,
+  onShowRanking,
 }: ResultScreenProps) {
   const { playPop, playBoom, playText } = useSound();
   const [restartHovered, setRestartHovered] = useState(false);
+  const [rankingHovered, setRankingHovered] = useState(false);
   const [isFinalMessage, setIsFinalMessage] = useState(false);
   const [bgReady, setBgReady] = useState(() => {
     const img = new Image();
@@ -39,7 +42,11 @@ export default function ResultScreen({
   useEffect(() => {
     const ids = [500, 2000, 3500].map(delay => setTimeout(playText, delay));
     const boomId = setTimeout(playBoom, 5200);
-    return () => { ids.forEach(clearTimeout); clearTimeout(boomId); };
+    // 성적 등장(5.2s) 이후 1.3s 뒤에 랭킹 자동 팝업
+    const rankId = setTimeout(onShowRanking, 6500);
+    return () => { ids.forEach(clearTimeout); clearTimeout(boomId); clearTimeout(rankId); };
+  // onShowRanking은 stable ref이므로 deps 경고 무시
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playText, playBoom]);
 
   useEffect(() => {
@@ -47,6 +54,7 @@ export default function ResultScreen({
     const id = setTimeout(() => { setIsFinalMessage(true); playText(); }, 7200);
     return () => clearTimeout(id);
   }, [ending.score, playText]);
+
   const isMalatangGood = ending.score > 50;
   const isSauceGood =
     !selectedSauces.includes("cilantro") && !selectedSauces.includes("mintchoco");
@@ -55,10 +63,10 @@ export default function ResultScreen({
     ? isSauceGood ? "/img/game_resultb1.webp" : "/img/game_resultb2.webp"
     : isSauceGood ? "/img/game_resultb3.webp" : "/img/game_resultb4.webp";
 
-  const isBad       = ending.professorImage.includes("bad");
-  const isSurprise  = ending.professorImage.includes("surprise");
-  const isConfetti  = ending.score === 100;
-  const gradeColor  = GRADE_COLORS[ending.grade] ?? "#6B7280";
+  const isBad      = ending.professorImage.includes("bad");
+  const isSurprise = ending.professorImage.includes("surprise");
+  const isConfetti = ending.score === 100;
+  const gradeColor = GRADE_COLORS[ending.grade] ?? "#6B7280";
 
   const [c0, c1, c2] = ending.comments;
 
@@ -67,6 +75,20 @@ export default function ResultScreen({
     ending.score >= 60 ? "나쁘진 않아.. \n 좀 더 맛있게 다시 한번 말아주게!" :
     ending.score >= 30 ? "흠.. 정말 최선이었나? \n 다시 말아주게나." :
     "정말 맛이 없군!!! \n 다시 말아오게나.";
+
+  const rankBtnBase: React.CSSProperties = {
+    background: rankingHovered ? "#B45309" : "#D97706",
+    border: "2px solid #92400E",
+    borderRadius: "8px",
+    padding: "7px 18px",
+    color: "#FFFBEB",
+    fontSize: "16px",
+    cursor: "pointer",
+    fontFamily: "'BazziGame', sans-serif",
+    boxShadow: "0 3px 0 #92400E",
+    width: "100%",
+    transition: "background 0.1s",
+  };
 
   return (
     <div className="relative w-full h-full select-none overflow-hidden" style={{ visibility: bgReady ? "visible" : "hidden" }}>
@@ -183,7 +205,7 @@ export default function ResultScreen({
         />
       </div>
 
-      {/* Layer 4: 말풍선 — 3줄 멘트 (타이틀 제거) */}
+      {/* Layer 4: 말풍선 — 3줄 멘트 */}
       <div className="absolute top-16 left-16" style={{ zIndex: 20 }}>
         <div className="relative">
           <img
@@ -228,7 +250,7 @@ export default function ResultScreen({
           </div>
         </div>
 
-        {/* 최종 성적 — 말풍선 아래 딱 등장 */}
+        {/* 최종 성적 */}
         <div
           className="mt-2 flex items-center gap-3 pl-2"
           style={{ opacity: 0, animation: "gradePop 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards", animationDelay: "5.2s" }}
@@ -248,8 +270,22 @@ export default function ResultScreen({
         </div>
       </div>
 
-      {/* 다시 도전 버튼 — 위치: bottom/right, 크기: width로 조절 */}
-      <div className="absolute" style={{ zIndex: 40, bottom: 5, right: 11 }}>
+      {/* 버튼 영역 — 우측 하단 */}
+      <div
+        className="absolute flex flex-col items-stretch gap-2"
+        style={{ zIndex: 40, bottom: 10, right: 11, width: "230px" }}
+      >
+        {/* 랭킹 버튼 */}
+        <button
+          onClick={() => { playPop(); onShowRanking(); }}
+          onMouseEnter={() => setRankingHovered(true)}
+          onMouseLeave={() => setRankingHovered(false)}
+          style={rankBtnBase}
+        >
+          📋 랭킹 보기
+        </button>
+
+        {/* 다시 도전 버튼 */}
         <button
           onClick={() => { playPop(); onReset(); }}
           onMouseEnter={() => setRestartHovered(true)}
