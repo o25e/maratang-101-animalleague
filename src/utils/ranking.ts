@@ -6,6 +6,7 @@ export async function getRankings(): Promise<RankEntry[]> {
     .from("rankings")
     .select("id, university, high_score, play_count")
     .order("high_score", { ascending: false })
+    .order("play_count", { ascending: true })
     .limit(100);
 
   if (error) {
