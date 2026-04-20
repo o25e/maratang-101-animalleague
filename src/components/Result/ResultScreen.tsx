@@ -92,11 +92,11 @@ export default function ResultScreen({
   // ────────────────────────────────────────────────
 
   const rankBtnBase: React.CSSProperties = {
-    background: rankingHovered ? "#B45309" : "#D97706",
+    background: rankingHovered ? "#FCD34D" : "#FDE68A",
     border: "2px solid #92400E",
     borderRadius: "8px",
     padding: "4px 10px",
-    color: "#FFFBEB",
+    color: "#78350F",
     fontSize: "20px",
     cursor: "pointer",
     fontFamily: "'BazziGame', sans-serif",
