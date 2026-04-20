@@ -29,11 +29,12 @@ export async function updateRanking(user: UserInfo, score: number): Promise<void
   }
 
   if (existing) {
+    const alreadyPerfect = existing.high_score >= 100;
     const { error: updateError } = await supabase
       .from("rankings")
       .update({
         high_score: Math.max(existing.high_score, score),
-        play_count: existing.play_count + 1,
+        play_count: alreadyPerfect ? existing.play_count : existing.play_count + 1,
       })
       .eq("id", user.id)
       .eq("university", user.university);
