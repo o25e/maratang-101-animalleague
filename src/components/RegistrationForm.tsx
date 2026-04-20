@@ -74,21 +74,21 @@ export default function RegistrationForm({ onSubmit, onCancel }: RegistrationFor
           {idError && <span style={{ fontSize: "12px", color: "#EF4444" }}>아이디를 입력해주세요!</span>}
         </div>
 
-        {/* 대학교 */}
+        {/* 소속 */}
         <div style={{ marginBottom: "22px" }}>
           <label style={{ display: "block", fontSize: "15px", color: "#92400E", marginBottom: "5px" }}>
-            대학교
+            마라탕 최애 재료
           </label>
           <input
             type="text"
             value={formUniv}
             maxLength={20}
-            placeholder="대학교를 입력하세요"
+            placeholder="당신의 마라탕 최애 재료는!?"
             onChange={e => { setFormUniv(e.target.value); setUnivError(false); }}
             onKeyDown={e => e.key === "Enter" && handleSubmit()}
             style={inputStyle(univError)}
           />
-          {univError && <span style={{ fontSize: "12px", color: "#EF4444" }}>대학교를 입력해주세요!</span>}
+          {univError && <span style={{ fontSize: "12px", color: "#EF4444" }}>마라탕 최애 재료를 입력해주세요!</span>}
         </div>
 
         {/* 제출 */}

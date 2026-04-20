@@ -19,11 +19,11 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: url('/img/click_cursor.webp'), auto;
+  cursor: url('/img/click_cursor.webp') 15 11, auto;
 }
 
 *, *:hover, *:active, *:focus {
-  cursor: url('/img/click_cursor.webp'), auto !important;
+  cursor: url('/img/click_cursor.webp') 15 11, auto !important;
 }
 
 /* ── professor 효과 애니메이션 ── */

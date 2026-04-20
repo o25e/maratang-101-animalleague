@@ -288,7 +288,7 @@ export default function ResultScreen({
 
       {/* 랭킹 버튼 */}
       <button
-        onClick={() => { playPop(); onShowRanking(); }}
+        onClick={() => { playPop(); rankingFired.current = true; onShowRanking(); }}
         onMouseEnter={() => setRankingHovered(true)}
         onMouseLeave={() => setRankingHovered(false)}
         style={{ ...rankBtnBase, position: "absolute", zIndex: 40, bottom: RANK_BTN_POS.bottom, right: RANK_BTN_POS.right }}
