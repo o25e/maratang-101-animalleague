@@ -67,7 +67,7 @@ export default function App() {
   const isGameScreen  = ["ingredients", "spice", "sauce"].includes(screen);
   const isTitleScreen = ["title", "manual", "instructions"].includes(screen);
   useBGM(isGameScreen,  "/sounds/gamebgm.mp3",  0.3);
-  useBGM(isTitleScreen, "/sounds/titlebgm.mp3", 0.3);
+  useBGM(isTitleScreen, "/sounds/titlebgm.mp3", 0.5);
 
   // ── 수강신청 폼 핸들러 ───────────────────────────────────────────────────────
   const handleRegister = (info: UserInfo) => {
