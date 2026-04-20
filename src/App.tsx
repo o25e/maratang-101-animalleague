@@ -76,7 +76,7 @@ export default function App() {
     setShowForm(false);
     if (pendingGame) {
       setPendingGame(false);
-      setScreen("ingredients");
+      reset();
     }
   };
 
@@ -88,12 +88,12 @@ export default function App() {
   // ── 게임 시작 (수강신청 여부 확인) ────────────────────────────────────────────
   const handleStartGame = useCallback(() => {
     if (userInfo) {
-      setScreen("ingredients");
+      reset();
     } else {
       setPendingGame(true);
       setShowForm(true);
     }
-  }, [userInfo, setScreen]);
+  }, [userInfo, reset]);
 
   // ── 랭킹 핸들러 ─────────────────────────────────────────────────────────────
   const openRanking  = useCallback(() => setShowRanking(true),  []);

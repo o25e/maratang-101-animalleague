@@ -13,19 +13,22 @@ const COL = "54px 1fr 1fr 72px 52px";
 export default function RankingModal({ currentUser, onClose, onHome }: RankingModalProps) {
   const [top20, setTop20] = useState<RankEntry[]>([]);
   const [myEntry, setMyEntry] = useState<{ rank: number; entry: RankEntry } | null>(null);
-  // 항상 최신 콜백을 ref에 보관 (stale closure 방지)
+  const [loading, setLoading] = useState(true);
   const onCloseRef = useRef(onClose);
   useEffect(() => { onCloseRef.current = onClose; }, [onClose]);
 
   useEffect(() => {
-    const all = getRankings();
-    setTop20(all.slice(0, 20));
-    if (currentUser) {
-      const idx = all.findIndex(
-        r => r.id === currentUser.id && r.university === currentUser.university
-      );
-      if (idx >= 0) setMyEntry({ rank: idx + 1, entry: all[idx] });
-    }
+    setLoading(true);
+    getRankings().then(all => {
+      setTop20(all.slice(0, 20));
+      if (currentUser) {
+        const idx = all.findIndex(
+          r => r.id === currentUser.id && r.university === currentUser.university
+        );
+        if (idx >= 0) setMyEntry({ rank: idx + 1, entry: all[idx] });
+      }
+      setLoading(false);
+    });
   }, [currentUser]);
 
   const isInTop20 = myEntry !== null && myEntry.rank <= 20;
@@ -134,7 +137,11 @@ export default function RankingModal({ currentUser, onClose, onHome }: RankingMo
 
           {/* ── 랭킹 행 ── */}
           <div style={{ padding: "6px 0", maxHeight: "320px", overflowY: "auto" }}>
-            {top20.length === 0 ? (
+            {loading ? (
+              <div style={{ textAlign: "center", padding: "32px 0", color: "#92400E", fontSize: "16px" }}>
+                랭킹 불러오는 중...
+              </div>
+            ) : top20.length === 0 ? (
               <div style={{ textAlign: "center", padding: "32px 0", color: "#92400E", fontSize: "16px" }}>
                 아직 기록이 없어요!<br />첫 번째 랭커가 되어보세요 🌶️
               </div>

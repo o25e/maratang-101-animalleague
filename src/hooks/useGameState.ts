@@ -46,7 +46,7 @@ export function useGameState(userInfo: UserInfo | null): GameState {
     setEnding(newEnding);
     setScreen("tasting");
     if (userInfo) {
-      updateRanking(userInfo, newEnding.score);
+      updateRanking(userInfo, newEnding.score).catch(console.error);
     }
   };
 

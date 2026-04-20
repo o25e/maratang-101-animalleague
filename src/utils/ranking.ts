@@ -1,25 +1,41 @@
 import { RankEntry, UserInfo } from "../types/game";
+import { supabase } from "../lib/supabase";
 
-const STORAGE_KEY = "maratang_rankings";
+export async function getRankings(): Promise<RankEntry[]> {
+  const { data, error } = await supabase
+    .from("rankings")
+    .select("id, university, high_score, play_count")
+    .order("high_score", { ascending: false })
+    .limit(100);
 
-export function getRankings(): RankEntry[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
-    return (JSON.parse(raw) as RankEntry[]).sort((a, b) => b.high_score - a.high_score);
-  } catch {
+  if (error) {
+    console.error("getRankings error:", error.message);
     return [];
   }
+  return (data ?? []) as RankEntry[];
 }
 
-export function updateRanking(user: UserInfo, score: number): void {
-  const all = getRankings();
-  const idx = all.findIndex(r => r.id === user.id && r.university === user.university);
-  if (idx >= 0) {
-    all[idx].play_count += 1;
-    all[idx].high_score = Math.max(all[idx].high_score, score);
+export async function updateRanking(user: UserInfo, score: number): Promise<void> {
+  // 기존 기록 조회
+  const { data: existing } = await supabase
+    .from("rankings")
+    .select("high_score, play_count")
+    .eq("id", user.id)
+    .eq("university", user.university)
+    .maybeSingle();
+
+  if (existing) {
+    await supabase
+      .from("rankings")
+      .update({
+        high_score: Math.max(existing.high_score, score),
+        play_count: existing.play_count + 1,
+      })
+      .eq("id", user.id)
+      .eq("university", user.university);
   } else {
-    all.push({ id: user.id, university: user.university, high_score: score, play_count: 1 });
+    await supabase
+      .from("rankings")
+      .insert({ id: user.id, university: user.university, high_score: score, play_count: 1 });
   }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
 }
