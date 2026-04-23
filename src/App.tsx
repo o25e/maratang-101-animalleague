@@ -2,9 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import { useGameState } from "./hooks/useGameState";
 import { useBGM } from "./hooks/useBGM";
 import { UserInfo } from "./types/game";
-import MobileBanner     from "./components/MobileBanner";
-import RankingModal     from "./components/RankingModal";
-import RegistrationForm from "./components/RegistrationForm";
+import MobileBanner        from "./components/MobileBanner";
+import MobileWarningModal  from "./components/MobileWarningModal";
+import RankingModal        from "./components/RankingModal";
+import RegistrationForm    from "./components/RegistrationForm";
 
 const PRELOAD_IMAGES = [
   "/img/screen/game_result.webp",
@@ -30,6 +31,12 @@ export default function App() {
   // 폼 완료 후 게임을 바로 시작해야 하는지 여부 (시작하기/게임방법→게임시작 경로)
   const [pendingGame, setPendingGame] = useState(false);
   const [showRanking, setShowRanking] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
+
+  useEffect(() => {
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) setShowWarning(true);
+  }, []);
 
   // 하이드레이션 오류 방지: useEffect 내에서만 localStorage 접근
   useEffect(() => {
@@ -187,6 +194,7 @@ export default function App() {
   return (
     <>
       <MobileBanner />
+      {showWarning && <MobileWarningModal onClose={() => setShowWarning(false)} />}
       <div className="relative w-full h-full">
         {renderScreen()}
 
