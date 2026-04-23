@@ -20,7 +20,7 @@ export default function RankingModal({ currentUser, onClose, onHome }: RankingMo
   useEffect(() => {
     setLoading(true);
     getRankings().then(all => {
-      setTop20(all.slice(0, 20));
+      setTop20(all.slice(0, 50));
       if (currentUser) {
         const idx = all.findIndex(
           r => r.id === currentUser.id && r.university === currentUser.university
@@ -31,7 +31,7 @@ export default function RankingModal({ currentUser, onClose, onHome }: RankingMo
     });
   }, [currentUser]);
 
-  const isInTop20 = myEntry !== null && myEntry.rank <= 20;
+  const isInTop20 = myEntry !== null && myEntry.rank <= 50;
 
   const rankLabel = (i: number) =>
     i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `${i + 1}`;
